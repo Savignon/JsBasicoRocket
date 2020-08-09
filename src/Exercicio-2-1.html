@@ -1,0 +1,27 @@
+
+
+<html>
+    <head>Curso de Javascript</head>
+
+    <body>
+        <button id="botao">Clique Aqui</button>
+
+        <div id="quadrados"></div>
+
+        <script>
+            var buttonElement = document.getElementById('botao');
+            var quadradoElement = document.getElementById('quadrados');
+
+            buttonElement.onclick = function () {
+                var quadrado = document.createElement('div');
+
+                quadrado.style.width = '100px';
+                quadrado.style.height = '100px';
+                quadrado.style.backgroundColor = '#F00';
+
+               quadradoElement.appendChild(quadrado);
+
+            };
+        </script>
+    </body>
+</html>

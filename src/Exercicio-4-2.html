@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Curso Javascript</title>
+</head>
+
+ <body>
+    <input type="text" name="user">
+    <button onclick="listRepos()">Adicionar</button>
+
+    <ul></ul>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var listElement = document.querySelector('ul');
+        var inputElement = document.querySelector('input');
+
+        function renderRepos(repos) {
+            for (repo of repos) {
+                const textElement = document.createTextNode(repo.name);
+                const liElement = document.createElement('li');
+
+                liElement.appendChild(textElement);
+                listElement.appendChild(liElement);
+            }
+        }
+
+        function listRepos() {
+            var user = inputElement.value;
+
+            if (!user) return;
+
+            axios.get('https://api.github.com/users/' + user + '/repos')
+            .then(function(response) {
+                renderRepos(response.data);
+            })
+        }
+    </script>
+
+</body> 
+
+</html>
+
+
+
